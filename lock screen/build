@@ -1,0 +1,3 @@
+osacompile -o 'Lock Screen.app' 'Lock Screen.applescript'
+cp Lock\ Screen.icns Lock\ Screen.app/Contents/Resources/applet.icns 
+touch Lock\ Screen.app/Contents/Resources/applet.icns 
