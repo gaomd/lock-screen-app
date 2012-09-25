@@ -1,0 +1,1 @@
+ls *.applescript | perl -pe 's|(.+)\.applescript|$1|g' | xargs -I asfile osacompile -o asfile.scpt asfile.applescript
