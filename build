@@ -1,0 +1,5 @@
+cd lock\ screen
+./build
+cd ../window\ movers
+./build
+cd ..
