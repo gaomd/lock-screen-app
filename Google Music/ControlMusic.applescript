@@ -1,4 +1,4 @@
-property actions : {{|name|:"ControlMusicPlay", action:"playPause"}, {|name|:"ControlMusicNext", action:"nextSong"}, {|name|:"ControlMusicPrevt", action:"prevSong"}}
+property actions : {{|name|:"ControlMusicPlay", action:"playPause"}, {|name|:"ControlMusicNext", action:"nextSong"}, {|name|:"ControlMusicPrev", action:"prevSong"}}
 
 on getAction for aName
 	repeat with action in actions
