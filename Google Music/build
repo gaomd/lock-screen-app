@@ -1,0 +1,3 @@
+osacompile -o 'ControlMusic.app' 'ControlMusic.applescript'
+cp ControlMusic.icns ControlMusic.app/Contents/Resources/applet.icns 
+touch ControlMusic.app/Contents/Resources/applet.icns 
