@@ -2,4 +2,6 @@ cd lock\ screen
 ./build
 cd ../window\ movers
 ./build
+cd ../Google\ Music
+./build
 cd ..
