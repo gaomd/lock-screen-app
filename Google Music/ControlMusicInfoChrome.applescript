@@ -3,7 +3,6 @@ tell application "Finder"
 	set p to path to me
 	set pathName to POSIX path of (parent of p as text)
 	set appicon to pathName & "ControlMusic.icns"
-	set albumart to pathName & "albumart.png"
 end tell
 
 tell application "System Events"
@@ -51,22 +50,36 @@ if isRunning then
 			set artist to execute javascript "document.getElementById('playerArtist').innerText"
 			set art to "http:" & (execute javascript "document.getElementById('playingAlbumArt').getAttribute('src')")
 		end tell
-		--Download album-art
+	end tell
+	
+	--Download album-art
+	try
+		do shell script "cd " & (quoted form of pathName) & ";curl -f -O -J " & art & " > out.txt"
+	end try
+	set artfile to do shell script "cat " & (quoted form of pathName & "out.txt") & " | perl -pe 's|.*\\b(\\w+\\.\\w+).|$1|g'"
+	tell application "Finder"
+		set artalias to (parent of p as text) & artfile as alias
+	end tell
+	
+	-- show song info on growl!!
+	tell application id "com.Growl.GrowlHelperApp"
 		try
-			do shell script "cd " & (quoted form of pathName) & ";curl -f -O -J " & art & " > out.txt"
-		end try
-		set artfile to do shell script "cat " & (quoted form of pathName & "out.txt") & " | perl -pe 's|.*\\b(\\w+\\.\\w+).|$1|g'"
-		-- show song info on growl!!
-		tell application id "com.Growl.GrowlHelperApp"
+			notify with name Â
+				"Song Info" title Â
+				(|title|) as text description Â
+				(artist) as text application name Â
+				"Control Music Scripts" image from location artalias
+		on error
 			notify with name Â
 				"Song Info" title Â
 				(|title|) as text description Â
 				(artist) as text application name Â
 				"Control Music Scripts"
-		end tell
-		try
-			do shell script "cd " & (quoted form of pathName) & ";rm *.jpg *.png"
 		end try
 	end tell
-	artfile
+	try
+		do shell script "rm " & (quoted form of pathName & artfile)
+	on error
+		do shell script "cd " & (quoted form of pathName) & "; rm *.png *.jpg"
+	end try
 end if
