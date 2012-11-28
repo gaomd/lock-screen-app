@@ -51,15 +51,36 @@ if isRunning then
 			set artist to do JavaScript "document.getElementById('playerArtist').innerText"
 			set art to "http:" & (do JavaScript "document.getElementById('playingAlbumArt').getAttribute('src')")
 		end tell
-		--Download album-art
-		do shell script "curl " & art & " > " & quoted form of albumart
-		-- show song info on growl!!
-		tell application id "com.Growl.GrowlHelperApp"
+	end tell
+	
+	--Download album-art
+	try
+		do shell script "cd " & (quoted form of pathName) & ";curl -f -O -J " & art & " > out.txt"
+	end try
+	set artfile to do shell script "cat " & (quoted form of pathName & "out.txt") & " | perl -pe 's|.*\\b(\\w+\\.\\w+).|$1|g'"
+	tell application "Finder"
+		set artalias to (parent of p as text) & artfile as alias
+	end tell
+	
+	-- show song info on growl!!
+	tell application id "com.Growl.GrowlHelperApp"
+		try
 			notify with name Â
 				"Song Info" title Â
 				(|title|) as text description Â
 				(artist) as text application name Â
-				"Control Music Scripts" image from location albumart
-		end tell
+				"Control Music Scripts" image from location artalias
+		on error
+			notify with name Â
+				"Song Info" title Â
+				(|title|) as text description Â
+				(artist) as text application name Â
+				"Control Music Scripts"
+		end try
 	end tell
+	try
+		do shell script "rm " & (quoted form of pathName & artfile)
+	on error
+		do shell script "cd " & (quoted form of pathName) & "; rm *.png *.jpg"
+	end try
 end if
