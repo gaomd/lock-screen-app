@@ -2,6 +2,10 @@ osacompile -o 'ControlMusic.app' 'ControlMusic.applescript'
 cp ControlMusic.icns ControlMusic.app/Contents/Resources/applet.icns 
 touch ControlMusic.app/Contents/Resources/applet.icns 
 
+osacompile -o 'ControlMusicChrome.app' 'ControlMusicChrome.applescript'
+cp ControlMusic.icns ControlMusicChrome.app/Contents/Resources/applet.icns 
+touch ControlMusicChrome.app/Contents/Resources/applet.icns 
+
 osacompile -o 'ControlMusicInfo.app' 'ControlMusicInfo.applescript'
 cp ControlMusic.icns ControlMusicInfo.app/Contents/Resources/applet.icns 
 touch ControlMusicInfo.app/Contents/Resources/applet.icns 
