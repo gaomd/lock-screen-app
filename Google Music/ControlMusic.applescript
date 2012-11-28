@@ -20,16 +20,15 @@ end tell
 set action to getAction for myName
 
 tell application "Safari"
-	tell application "Safari"
-		set allTabs to (every tab of every window)
-		set allTabs to item 1 of allTabs --don't ask me why but otherwise it didn't work. Maybe it's a problem with a extension for me
-		repeat with currTab in allTabs
-			set theURL to (URL of currTab) as string
-			if "play.google.com/music" is in theURL then
-				exit repeat
-			end if
-		end repeat
-	end tell
+	set allTabs to (every tab of every window)
+	set allTabs to item 1 of allTabs --don't ask me why but otherwise it didn't work. Maybe it's a problem with a extension for me
+	repeat with currTab in allTabs
+		set theURL to (URL of currTab) as string
+		if "play.google.com/music" is in theURL then
+			exit repeat
+		end if
+	end repeat
+	
 	if action is not missing value then
 		tell currTab to do JavaScript "SJBpost('" & action & "');"
 	end if
