@@ -34,12 +34,6 @@ if isRunning then
 	end tell
 end if
 
-
-Fix Chrome window handling. The 'magic bullet' didn't work and instead
-set allTabs to allTabs in the first window. This update makes the
-script work in all tabs of all windows properly.
-
-
 if isRunning then
 	tell application "Google Chrome"
 		repeat with currWindow in (every window)
