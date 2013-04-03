@@ -20,15 +20,16 @@
 set sAction to "playPause"
 
 tell application "Google Chrome"
-		set allTabs to (every tab of every window)
-		set allTabs to item 1 of allTabs --magic bullet
-		repeat with currTab in allTabs
+	repeat with currWindow in (every window)
+		repeat with currTab in (every tab of currWindow)
 			set theURL to (URL of currTab) as string
 			if "play.google.com/music" is in theURL then
-				exit repeat
+				set foundTab to currTab
 			end if
 		end repeat
-	if sAction is not missing value then
-		tell currTab to execute javascript "SJBpost('" & sAction & "');"
+	end repeat
+	
+	if sAction is not missing value and foundTab is not missing value then
+		tell foundTab to execute javascript "SJBpost('" & sAction & "');"
 	end if
 end tell
