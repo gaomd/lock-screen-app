@@ -20,17 +20,17 @@ end tell
 set action to getAction for myName
 
 tell application "Google Chrome"
-	set allTabs to (every tab of every window)
-	set allTabs to item 1 of allTabs --don't ask me why but otherwise it didn't work. Maybe it's a problem with a extension for me
-	repeat with currTab in allTabs
-		set theURL to (URL of currTab) as string
-		if "play.google.com/music" is in theURL then
-			exit repeat
-		end if
+	repeat with currWindow in (every window)
+		repeat with currTab in (every tab of currWindow)
+			set theURL to (URL of currTab) as string
+			if "play.google.com/music" is in theURL then
+				set foundTab to currTab
+			end if
+		end repeat
 	end repeat
-	
-	if action is not missing value then
-		tell currTab to execute javascript "SJBpost('" & action & "');"
+
+	if sAction is not missing value and foundTab is not missing value then
+		tell foundTab to execute javascript "SJBpost('" & sAction & "');"
 	end if
 end tell
 
@@ -42,7 +42,7 @@ if action is missing value then
 	set msg to msg & return & "This script can make some copies if you want to."
 	set returnValue to display dialog msg buttons {"Create files", "I'll do it myself"}
 	if returnValue is equal to {button returned:"Create files"} then
-		--create the filesÉ
+		--create the filesï¿½
 		display alert "Here we go: " & pathName
 		set myFullName to pathName & myName & myExtension
 		repeat with action in actions
