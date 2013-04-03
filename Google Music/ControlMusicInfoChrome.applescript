@@ -6,7 +6,7 @@ tell application "Finder"
 end tell
 
 tell application "System Events"
-	set isRunning to Â
+	set isRunning to ï¿½
 		(count of (every process whose bundle identifier is "com.Growl.GrowlHelperApp")) > 0
 end tell
 
@@ -14,38 +14,44 @@ if isRunning then
 	tell application id "com.Growl.GrowlHelperApp"
 		-- Make a list of all the notification types 
 		-- that this script will ever send:
-		set the allNotificationsList to Â
+		set the allNotificationsList to ï¿½
 			{"Song Info", "Action Taken"}
 		
 		-- Make a list of the notifications 
 		-- that will be enabled by default.      
 		-- Those not enabled by default can be enabled later 
 		-- in the 'Applications' tab of the Growl preferences.
-		set the enabledNotificationsList to Â
+		set the enabledNotificationsList to ï¿½
 			{"Song Info"}
 		
 		-- Register our script with growl.
 		-- You can optionally (as here) set a default icon 
 		-- for this script's notifications.
-		register as application Â
-			"Control Music Scripts" all notifications allNotificationsList Â
-			default notifications enabledNotificationsList Â
+		register as application ï¿½
+			"Control Music Scripts" all notifications allNotificationsList ï¿½
+			default notifications enabledNotificationsList ï¿½
 			icon of application "Safari"
 	end tell
 end if
 
+
+Fix Chrome window handling. The 'magic bullet' didn't work and instead
+set allTabs to allTabs in the first window. This update makes the
+script work in all tabs of all windows properly.
+
+
 if isRunning then
 	tell application "Google Chrome"
-		set allTabs to (every tab of every window)
-		set allTabs to item 1 of allTabs --don't ask me why but otherwise it didn't work. Maybe it's a problem with a extension for me
-		repeat with currTab in allTabs
-			set theURL to (URL of currTab) as string
-			if "play.google.com/music" is in theURL then
-				exit repeat
-			end if
+		repeat with currWindow in (every window)
+			repeat with currTab in (every tab of currWindow)
+				set theURL to (URL of currTab) as string
+				if "play.google.com/music" is in theURL then
+					set foundTab to currTab
+				end if
+			end repeat
 		end repeat
 		-- get song info from browser :)
-		tell currTab
+		tell foundTab
 			set |title| to execute javascript "document.getElementById('playerSongTitle').innerText"
 			set artist to execute javascript "document.getElementById('playerArtist').innerText"
 			set art to "http:" & (execute javascript "document.getElementById('playingAlbumArt').getAttribute('src')")
@@ -64,16 +70,16 @@ if isRunning then
 	-- show song info on growl!!
 	tell application id "com.Growl.GrowlHelperApp"
 		try
-			notify with name Â
-				"Song Info" title Â
-				(|title|) as text description Â
-				(artist) as text application name Â
+			notify with name ï¿½
+				"Song Info" title ï¿½
+				(|title|) as text description ï¿½
+				(artist) as text application name ï¿½
 				"Control Music Scripts" image from location artalias
 		on error
-			notify with name Â
-				"Song Info" title Â
-				(|title|) as text description Â
-				(artist) as text application name Â
+			notify with name ï¿½
+				"Song Info" title ï¿½
+				(|title|) as text description ï¿½
+				(artist) as text application name ï¿½
 				"Control Music Scripts"
 		end try
 	end tell
