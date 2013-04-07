@@ -43,7 +43,7 @@ if action is missing value then
 	set msg to msg & return & "This script can make some copies if you want to."
 	set returnValue to display dialog msg buttons {"Create files", "I'll do it myself"}
 	if returnValue is equal to {button returned:"Create files"} then
-		--create the filesƒ
+		--create the filesÉ
 		display alert "Here we go: " & pathName
 		set myFullName to pathName & myName & myExtension
 		repeat with action in actions
