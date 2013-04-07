@@ -6,7 +6,7 @@ tell application "Finder"
 end tell
 
 tell application "System Events"
-	set isRunning to ï¿½
+	set isRunning to Â
 		(count of (every process whose bundle identifier is "com.Growl.GrowlHelperApp")) > 0
 end tell
 
@@ -14,23 +14,23 @@ if isRunning then
 	tell application id "com.Growl.GrowlHelperApp"
 		-- Make a list of all the notification types 
 		-- that this script will ever send:
-		set the allNotificationsList to ï¿½
+		set the allNotificationsList to Â
 			{"Song Info", "Action Taken"}
 		
 		-- Make a list of the notifications 
 		-- that will be enabled by default.      
 		-- Those not enabled by default can be enabled later 
 		-- in the 'Applications' tab of the Growl preferences.
-		set the enabledNotificationsList to ï¿½
+		set the enabledNotificationsList to Â
 			{"Song Info"}
 		
 		-- Register our script with growl.
 		-- You can optionally (as here) set a default icon 
 		-- for this script's notifications.
-		register as application ï¿½
-			"Control Music Scripts" all notifications allNotificationsList ï¿½
-			default notifications enabledNotificationsList ï¿½
-			icon of application "Safari"
+		register as application Â
+			"Control Music Scripts" all notifications allNotificationsList Â
+			default notifications enabledNotificationsList Â
+			icon of application "Google Chrome"
 	end tell
 end if
 
@@ -64,16 +64,16 @@ if isRunning then
 	-- show song info on growl!!
 	tell application id "com.Growl.GrowlHelperApp"
 		try
-			notify with name ï¿½
-				"Song Info" title ï¿½
-				(|title|) as text description ï¿½
-				(artist) as text application name ï¿½
+			notify with name Â
+				"Song Info" title Â
+				(|title|) as text description Â
+				(artist) as text application name Â
 				"Control Music Scripts" image from location artalias
 		on error
-			notify with name ï¿½
-				"Song Info" title ï¿½
-				(|title|) as text description ï¿½
-				(artist) as text application name ï¿½
+			notify with name Â
+				"Song Info" title Â
+				(|title|) as text description Â
+				(artist) as text application name Â
 				"Control Music Scripts"
 		end try
 	end tell

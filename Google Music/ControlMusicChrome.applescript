@@ -20,6 +20,7 @@ end tell
 set action to getAction for myName
 
 tell application "Google Chrome"
+	set foundTab to missing value
 	repeat with currWindow in (every window)
 		repeat with currTab in (every tab of currWindow)
 			set theURL to (URL of currTab) as string
@@ -29,8 +30,8 @@ tell application "Google Chrome"
 		end repeat
 	end repeat
 
-	if sAction is not missing value and foundTab is not missing value then
-		tell foundTab to execute javascript "SJBpost('" & sAction & "');"
+	if action is not missing value and foundTab is not missing value then
+		tell foundTab to execute javascript "SJBpost('" & action & "');"
 	end if
 end tell
 
@@ -42,7 +43,7 @@ if action is missing value then
 	set msg to msg & return & "This script can make some copies if you want to."
 	set returnValue to display dialog msg buttons {"Create files", "I'll do it myself"}
 	if returnValue is equal to {button returned:"Create files"} then
-		--create the filesï¿½
+		--create the filesƒ
 		display alert "Here we go: " & pathName
 		set myFullName to pathName & myName & myExtension
 		repeat with action in actions
