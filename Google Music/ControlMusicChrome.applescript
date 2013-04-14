@@ -20,17 +20,18 @@ end tell
 set action to getAction for myName
 
 tell application "Google Chrome"
-	set allTabs to (every tab of every window)
-	set allTabs to item 1 of allTabs --don't ask me why but otherwise it didn't work. Maybe it's a problem with a extension for me
-	repeat with currTab in allTabs
-		set theURL to (URL of currTab) as string
-		if "play.google.com/music" is in theURL then
-			exit repeat
-		end if
+	set foundTab to missing value
+	repeat with currWindow in (every window)
+		repeat with currTab in (every tab of currWindow)
+			set theURL to (URL of currTab) as string
+			if "play.google.com/music" is in theURL then
+				set foundTab to currTab
+			end if
+		end repeat
 	end repeat
-	
-	if action is not missing value then
-		tell currTab to execute javascript "SJBpost('" & action & "');"
+
+	if action is not missing value and foundTab is not missing value then
+		tell foundTab to execute javascript "SJBpost('" & action & "');"
 	end if
 end tell
 
