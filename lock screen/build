@@ -1,3 +1,6 @@
 osacompile -o 'Lock Screen.app' 'Lock Screen.applescript'
 cp Lock\ Screen.icns Lock\ Screen.app/Contents/Resources/applet.icns 
 touch Lock\ Screen.app/Contents/Resources/applet.icns 
+osacompile -o 'Lock Screensaver.app' 'Lock Screensaver.applescript'
+cp Lock\ Screen.icns Lock\ Screensaver.app/Contents/Resources/applet.icns 
+touch Lock\ Screensaver.app/Contents/Resources/applet.icns 
