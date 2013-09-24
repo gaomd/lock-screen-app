@@ -30,22 +30,22 @@ if isRunning then
 		register as application Â
 			"Control Music Scripts" all notifications allNotificationsList Â
 			default notifications enabledNotificationsList Â
-			icon of application "Safari"
+			icon of application "Google Chrome"
 	end tell
 end if
 
 if isRunning then
 	tell application "Google Chrome"
-		set allTabs to (every tab of every window)
-		set allTabs to item 1 of allTabs --don't ask me why but otherwise it didn't work. Maybe it's a problem with a extension for me
-		repeat with currTab in allTabs
-			set theURL to (URL of currTab) as string
-			if "play.google.com/music" is in theURL then
-				exit repeat
-			end if
+		repeat with currWindow in (every window)
+			repeat with currTab in (every tab of currWindow)
+				set theURL to (URL of currTab) as string
+				if "play.google.com/music" is in theURL then
+					set foundTab to currTab
+				end if
+			end repeat
 		end repeat
 		-- get song info from browser :)
-		tell currTab
+		tell foundTab
 			set |title| to execute javascript "document.getElementById('playerSongTitle').innerText"
 			set artist to execute javascript "document.getElementById('playerArtist').innerText"
 			set art to "http:" & (execute javascript "document.getElementById('playingAlbumArt').getAttribute('src')")
