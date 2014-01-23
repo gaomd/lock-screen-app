@@ -1,4 +1,4 @@
-property actions : {{|name|:"ControlMusicPlay", action:"playPause"}, {|name|:"ControlMusicNext", action:"nextSong"}, {|name|:"ControlMusicPrev", action:"prevSong"}}
+property actions : {{|name|:"ControlMusicPlay", action:"play-pause"}, {|name|:"ControlMusicNext", action:"forward"}, {|name|:"ControlMusicPrev", action:"rewind"}}
 
 on getAction for aName
 	repeat with action in actions
@@ -29,9 +29,9 @@ tell application "Google Chrome"
 			end if
 		end repeat
 	end repeat
-
+	
 	if action is not missing value and foundTab is not missing value then
-		tell foundTab to execute javascript "SJBpost('" & action & "');"
+		tell foundTab to execute javascript "document.querySelector('[data-id=\"" & action & "\"]').click();"
 	end if
 end tell
 
