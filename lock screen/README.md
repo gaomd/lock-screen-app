@@ -33,7 +33,7 @@ order of ease of use:
   might be able to use it in 10.8 (I skipped 10.8), test at your own risk, might require
   a reboot to get back into OSX. Won't harm your machine, but make sure you have no
   unsaved documents open :)
-- **10.8** `Lock Screen.app`, this script makes use of the '*access for assistive
+- **10.n** `Lock Screen.app`, this script makes use of the '*access for assistive
   devices*' to open up the menu bar items and search the menu's for a menu item labeled
   '*Lock Screen*' and works on any version of OSX. When found the script activates this
   menu-item, causing your screen to get locked. In order to allow it to do it's thing,
