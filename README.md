@@ -46,3 +46,7 @@ order of ease of use:
 This folder contains an exception to the plain-text-only nature of provided code. Since I
 will not assume everybody has `clang` installed I've included the build binary of `main.m`
 in the repository. The build-script has the required build-instruction commented out.
+
+# Acknowledgments
+
+[gDD/lock-screen-app](https://github.com/gDD/lock-screen-app) was forked from [windgazer's WALS repository](https://github.com/windgazer/WALS), only kept lock screen subdirectory with adjusts.
