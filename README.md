@@ -1,5 +1,7 @@
 Lock Screen
-====
+===========
+
+![Lock Screen Introduction](intro.png)
 
 > To make use of any of this code, download / pull this repository and run the `build`
 > command line script. Make sure you pick the right app-bundle to use for your OSX version
@@ -47,6 +49,7 @@ This folder contains an exception to the plain-text-only nature of provided code
 will not assume everybody has `clang` installed I've included the build binary of `main.m`
 in the repository. The build-script has the required build-instruction commented out.
 
-# Acknowledgments
+Acknowledgments
+---------------
 
 [gDD/lock-screen-app](https://github.com/gDD/lock-screen-app) was forked from [windgazer's WALS repository](https://github.com/windgazer/WALS), only kept lock screen subdirectory with adjusts.
