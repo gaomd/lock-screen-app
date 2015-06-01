@@ -52,4 +52,4 @@ in the repository. The build-script has the required build-instruction commented
 Acknowledgments
 ---------------
 
-[gDD/lock-screen-app](https://github.com/gDD/lock-screen-app) was forked from [windgazer's WALS repository](https://github.com/windgazer/WALS), only kept lock screen subdirectory with adjusts.
+[gaomd/lock-screen-app](https://github.com/gaomd/lock-screen-app) was forked from [windgazer's WALS repository](https://github.com/windgazer/WALS), only kept lock screen subdirectory with adjusts.
