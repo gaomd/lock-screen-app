@@ -1,7 +1,18 @@
-Lock Screen
-===========
+# Lock Screen
 
-![Lock Screen Introduction](intro.png)
+The missing Lock Screen app for Spotlight, for OS X.
+
+## Introduction
+
+Both LaunchBar and Alfred have built-in lock screen command, finally our lovely Spotlight got one, too:
+
+![Lock Screen app in Spotlight](assets/spotlight-view.png)
+
+Or just locking screen up directly from Finder:
+
+![Lock Screen app in Finder](assets/finder-view.png)
+
+## Installation
 
 > To make use of any of this code, download / pull this repository and run the `build`
 > command line script. Make sure you pick the right app-bundle to use for your OSX version
@@ -52,4 +63,4 @@ in the repository. The build-script has the required build-instruction commented
 Acknowledgments
 ---------------
 
-[gaomd/lock-screen-app](https://github.com/gaomd/lock-screen-app) was forked from [windgazer's WALS repository](https://github.com/windgazer/WALS), only kept lock screen subdirectory with adjusts.
+[gaomd/lock-screen-app](https://github.com/gaomd/lock-screen-app) was forked from [windgazer's WALS repository](https://github.com/windgazer/WALS), only kept lock screen parts with improvements.
