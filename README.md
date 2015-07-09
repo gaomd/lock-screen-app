@@ -4,7 +4,7 @@ The missing Lock Screen app for Spotlight, for OS X.
 
 ## Introduction
 
-Both LaunchBar and Alfred have built-in lock screen command, finally our lovely Spotlight got one, too:
+Both LaunchBar and Alfred have lock screen commands built-in for convenience, Spotlight's turn:
 
 ![Lock Screen app in Spotlight](assets/spotlight-view.png)
 
