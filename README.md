@@ -6,19 +6,11 @@ The missing Lock Screen app for Spotlight, for OS X.
 
 Both LaunchBar and Alfred have lock screen commands built-in for convenience, Spotlight's turn:
 
-<div style="width: 792px;">
-
-![Lock Screen app in Spotlight](assets/spotlight-view.png)
-
-</div>
+![Lock Screen app in Spotlight](assets/spotlight-view.svg)
 
 Or just locking screen up directly from Finder:
 
-<div style="width: 428px;">
-
-![Lock Screen app in Finder](assets/finder-view.png)
-
-</div>
+![Lock Screen app in Finder](assets/finder-view.svg)
 
 ## Installation
 
