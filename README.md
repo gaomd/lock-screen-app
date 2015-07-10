@@ -1,10 +1,10 @@
 # Lock Screen
 
-The missing Lock Screen app for Spotlight, for OS X.
+The missing Lock Screen app for Spotlight, OS X.
 
 ## Introduction
 
-Both LaunchBar and Alfred have lock screen commands built-in for convenience, Spotlight's turn:
+Both LaunchBar and Alfred have lock screen functionality built-in for convenience, it's Spotlight's turn now:
 
 ![Lock Screen app in Spotlight](assets/spotlight-view.png)
 
