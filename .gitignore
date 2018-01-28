@@ -1,4 +1,1 @@
-*.app/
-*.scpt
-albumart.png
-out.txt
+/dist

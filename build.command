@@ -1,15 +1,13 @@
 cd "$(dirname "$0")"
 
-osacompile -o 'Lock Screen.app' 'Lock Screen.applescript'
-cp Lock\ Screen.icns Lock\ Screen.app/Contents/Resources/applet.icns 
-touch Lock\ Screen.app/Contents/Resources/applet.icns 
+mkdir -p dist
+rm -rf "dist/Lock Screen.app"
 
-osacompile -o 'Lock Screensaver.app' 'Lock Screensaver.applescript'
-cp Lock\ Screen.icns Lock\ Screensaver.app/Contents/Resources/applet.icns 
-touch Lock\ Screensaver.app/Contents/Resources/applet.icns
+# Compile AppleScript to macOS App
+osacompile -o "dist/Lock Screen.app" "Lock Screen.applescript"
 
-# clang -framework Foundation main.m -o lockscreen
-osacompile -o 'Lock Screen Bundle.app' 'Lock Screen Bundle.applescript'
-cp Lock\ Screen.icns Lock\ Screen\ Bundle.app/Contents/Resources/applet.icns 
-touch Lock\ Screen\ Bundle.app/Contents/Resources/applet.icns
-cp lockscreen Lock\ Screen\ Bundle.app/Contents/Resources/Scripts/lockscreen
+# Install the icon
+cp "Lock Screen.icns" "dist/Lock Screen.app/Contents/Resources/applet.icns"
+
+# Force the icon cache to be updated
+touch "dist/Lock Screen.app/Contents/Resources/applet.icns"
