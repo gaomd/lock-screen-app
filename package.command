@@ -12,7 +12,7 @@ fi
 if [[ -d "dist" && -d "dist/Lock Screen.app" ]]
 then
     pushd dist > /dev/null
-    rm -rf "Lock-Screen-0.0.1.dmg"
+    rm -rf "Lock-Screen-*.dmg"
     create-dmg "Lock Screen.app"
     popd > /dev/null
     exit 0;
