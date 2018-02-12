@@ -22,6 +22,8 @@ Also available under Apple menu => Lock Screen.
 
 ### For macOS 10.13 High Sierra and later
 
+Download a pre-built .dmg at [releases section](https://github.com/gaomd/lock-screen-app/releases), or build by yourself:
+
 1. [Extract the downloaded master zip](https://github.com/gaomd/lock-screen-app/archive/master.zip)
 2. Build the *Lock Screen.app* by double clicking the `build.command` script
 3. Copy the *Lock Screen.app* file in the *dist* directory to anywhere you'd like (*Applications* directory preferred)
